@@ -1,11 +1,16 @@
 function humanMove() {
 let Person = prompt("Enter Your Move: ");
-return Person;
+let moves;
+if(Person){
+    moves = Person.toLowerCase();
+    return moves;
+}
+return moves;
 }
 function computerMove(){
 const Moves = ['rock', 'paper', 'scissor'];
 const randomMove = Math.floor(Math.random() * Moves.length);
-const computerMoves = Moves[randomMove];
+const computerMoves = Moves[randomMove].toLowerCase();
 return computerMoves;
 }
 let result;
