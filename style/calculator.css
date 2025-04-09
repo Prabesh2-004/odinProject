@@ -1,0 +1,6 @@
+.container::before{
+    contain: "Hello World!";
+}
+.container::after{
+    contain: "Bye World!";
+}
