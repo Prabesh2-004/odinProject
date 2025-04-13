@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="display">
+<button id="backspace">⌫</button>
+
+<script>
+  const display = document.getElementById('display');
+  const backspaceBtn = document.getElementById('backspace');
+
+  // Backspace button click handler
+  backspaceBtn.addEventListener('click', () => {
+    display.value = display.value.slice(0, -1);
+  });
+
+  // Alternative: Also handle keyboard backspace
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Backspace') {
+      e.preventDefault(); // Prevent default browser back navigation
+      display.value = display.value.slice(0, -1);
+    }
+  });
+</script>
+</body>
+</html>
