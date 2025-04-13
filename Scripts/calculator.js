@@ -4,6 +4,7 @@ const display = document.querySelector('.display');
 const equalTo = document.querySelector('.equalTo');
 const clearall = document.querySelector('.clearAll');
 const backSpaceBtn = document.querySelector('.clear');
+const perCentOper = document.querySelector('.operatorPer')
 
 let numbers = "";
 
@@ -33,6 +34,12 @@ equalTo.addEventListener('click', function() {
         numbers = "";
     }
 });
+
+perCentOper.addEventListener('click', function () {
+    numbers = eval(numbers);
+    numbers = numbers/100;
+    display.innerHTML = numbers;
+})
 
 // Handle "C" button click (clear all)
 clearall.addEventListener('click', function() {
