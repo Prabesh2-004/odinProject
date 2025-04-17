@@ -8,9 +8,7 @@ const myArray = [];
 
 function renderingBook(){
     let booklist = "";
-    for (let i=0; i<myArray.length;i++){
-        const booklistObject = myArray[i];
-        const {name, author, page} = booklistObject;
+    myArray.forEach(function({name, author, page}, i){
         booklist += `
             <div class="Name-Author-js">
                 <div> ${name} </div>
@@ -18,8 +16,8 @@ function renderingBook(){
                 <div> ${page} </div>
                 <button onclick="deletebtn(${i})" class="js-delete-button">Delete</button>
             </div>
-    `;
-    }
+        `;
+    });
     display.innerHTML = booklist;
 }
 
