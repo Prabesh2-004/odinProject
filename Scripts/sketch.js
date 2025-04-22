@@ -1,6 +1,7 @@
 const display = document.querySelector('.container');
 const inputBox = document.querySelector('.input-box');
 const addButton = document.querySelector('.addBtn');
+const resetContainer = document.querySelector('.reset-container');
 const divdiv = '<div class="div-box"></div>';
 
 addButton.addEventListener('click', function () {
@@ -30,4 +31,8 @@ addButton.addEventListener('click', function () {
         inputBox.value = "";
     }
 });
+
+resetContainer.addEventListener('click', () => {
+    display.innerHTML = '';
+})
 
