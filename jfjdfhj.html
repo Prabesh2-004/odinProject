@@ -24,7 +24,10 @@
         const container = document.querySelector('.container');
 
         hoverButton.addEventListener('mouseover', function() {
-            hoverButton.style.backgroundColor = 'red'
+            container.style.display = 'block';
+        });
+        hoverButton.addEventListener('mouseout', function() {
+            container.style.display = 'none';
         })
     </script>
 </body>
