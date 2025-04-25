@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style/library.css">
+</head>
+<body>
+    <div class="container">
+        <div class="book-store">
+            <div class="Name-Author">
+                <p>| Name |</p>
+                <p>| Author |</p>
+                <p>| Pages |</p>
+            </div>
+
+            <p class="display"></p>
+
+        </div>
+        <div class="book-input">
+            <div class="storage">
+                <h2>Enter Book You Wanna Read </h2>
+                <div class="input-box">
+                    <label for="Name">Book Name: </label>
+                    <input type="text" name="Name" id="Name" class="Book-name" required autofocus>
+
+                    <label for="Author">Author Name: </label>
+                    <input type="text" name="Author" id="Author" class="author-name" required>
+
+                    <label for="Pages">Pages: </label>
+                    <input type="number" name="Pages" id="Pages" class="pages-number" required>
+                    <button class="addBtn">Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="Scripts/library.js"></script>
+</body>
+</html>

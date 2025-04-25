@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            border: 2px solid black;
+            width: 200px;
+            padding: 10px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <button>About Me</button>
+    <div class="container">
+        Name: Prabesh Lamichhane<br>
+        Age: 21
+    </div>
+    <script>
+        const hoverButton = document.querySelector('button');
+        const container = document.querySelector('.container');
+
+        hoverButton.addEventListener('mouseover', function() {
+            container.style.display = 'block';
+        });
+        hoverButton.addEventListener('mouseout', function() {
+            container.style.display = 'none';
+        })
+    </script>
+</body>
+</html>
