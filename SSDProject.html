@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style/SSDProject.css">
+</head>
+<body>
+    <!--Heading-->
+    <nav>
+        <div class="navigation-bar">
+            <div class="logo-slot"><a href="">Delta</a></div>
+            <div class="link-slot">
+                <a href="#" class="menu">Menu <img src="icons/keyboard_arrow_down.png"></a>
+                <a href="#">Cold Drink <img src="icons/keyboard_arrow_down.png"></a>
+                <a href="#">Snacks <img src="icons/keyboard_arrow_down.png"></a>
+                <a href="#">About Us</a>
+            </div>
+            <div class="login-slot">
+            <button class="signup-button-js">Sign Up</button>
+            </div>
+        </div>
+        <div class="menu-container">
+            <div class="menu-bar">
+                <a href="#">Pizza</a>
+                <a href="#">Burger</a>
+                <a href="#">Sushi</a>
+                <a href="#">Ramen</a>
+                <a href="#">MO:MO</a>
+                <a href="#">Thukpa</a>
+                <a href="#">Fried Chicken</a>
+                <a href="#">French Fries</a>
+                <a href="#">spaghetti</a>
+                <a href="#">Chowmein</a>
+                <a href="#">Meatball</a>
+                <a href="#">Sausage</a>
+            </div>
+        </div>
+    </nav>
+    <!--Main-->
+    <main>
+        <div class="image-slider">
+            <div class="slide-container">
+                <div class="slider-track">
+                    <div class="slide active">1</div>
+                    <div class="slide">2</div>
+                    <div class="slide">3</div>
+                    <div class="slide">4</div>
+                </div>
+            </div>
+        </div>
+        <div class="slider-nav">
+            <button class="prev">❮</button>
+            <div class="dots"></div>
+            <button class="next">❯</button>
+          </div>
+        </div>
+        <div class="signup-box-container">
+            <div class="login-box">
+                <div class="login-header">
+                    <h2>Welcome</h2>
+                </div>
+                <form action="submit-data" method="post">
+                    <div class="input-group">
+                    <label for="username">Username: </label>
+                    <input type="text" name="username" id="username" required autofocus>
+                    </div>
+                    <div class="input-group">
+                    <label for="email">Email: </label>
+                    <input type="email" name="email" id="email" required>
+                    </div>
+                    <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" required>
+                    </div>
+                    <div class="remember-forgot">
+                        <div class="remember-me">
+                            <input type="checkbox" id="remember" name="remember" required>
+                            <label for="remember">Remember me</label>
+                        </div>
+                        <div class="forgot-password">
+                            <a href="/forgot-password">Forgot password?</a>
+                        </div>
+                    </div>
+                    <button class="signup-button">Sign Up</button>
+                </form>
+                <div class="signin-link">
+                    <p>Already have an account? 
+                    <a href="#" class="signin-link-js">Sign In</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="signin-box-container">
+            <div class="login-box">
+                <div class="login-header">
+                    <h2>Welcome Back</h2>
+                </div>
+                <form action="submit-data" method="post">
+                    <div class="input-group">
+                    <label for="email">Email: </label>
+                    <input type="email" name="email" id="email" required autofocus>
+                    </div>
+                    <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" required>
+                    </div>
+                    <div class="remember-forgot">
+                        <div class="remember-me">
+                            <input type="checkbox" id="remember" name="remember" required>
+                            <label for="remember">Remember me</label>
+                        </div>
+                        <div class="forgot-password">
+                            <a href="/forgot-password">Forgot password?</a>
+                        </div>
+                    </div>
+                    <button class="signup-button">Sign In</button>
+                </form>
+                <div class="signup-link">
+                    <p>Don't have an account? 
+                    <a href="#" class="signup-link-js">Sign Up</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="Scripts/SSDProject.js"></script>
+</body>
+</html>

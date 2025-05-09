@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .image-slider {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.slider-container {
+  width: 100%;
+  position: relative;
+  background-color: black;
+  color: white;
+}
+
+.slider-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+  min-width: 100%;
+  position: relative;
+}
+
+.slide img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.slider-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.slider-nav button {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 0 15px;
+}
+
+.dots {
+  display: flex;
+  gap: 10px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #ccc;
+  cursor: pointer;
+}
+
+.dot.active {
+  background: #333;
+}
+    </style>
+</head>
+<body>
+    <div class="image-slider">
+        <div class="slider-container">
+          <div class="slider-track">
+            <div class="slide active">
+              1
+              <!-- <img src="img/Frieren/download.jpg" alt="Image 1"> -->
+            </div>
+            <div class="slide">
+              2
+              <!-- <img src="img/Frieren/Himmel _ Sousou No Frieren.jpg" alt="Image 2"> -->
+            </div>
+            <div class="slide">
+              3
+              <!-- <img src="img/1346621.jpeg" alt="Image 3"> -->
+            </div>
+            <div class="slide">
+              4
+              <!-- <img src="img/Frieren/Heiter - Sousou no Frieren icons _ Frieren_ Beyond Journey’s End icons.jpg" alt="Image 4"> -->
+            </div>
+          </div>
+        </div>
+        <div class="slider-nav">
+          <button class="prev">❮</button>
+          <div class="dots"></div>
+          <button class="next">❯</button>
+        </div>
+      </div>
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+  const track = document.querySelector('.slider-track');
+  const slides = document.querySelectorAll('.slide');
+  const dotsContainer = document.querySelector('.dots');
+  const prevBtn = document.querySelector('.prev');
+  const nextBtn = document.querySelector('.next');
+  let currentIndex = 0;
+  let intervalId;
+  const slideInterval = 5000; // 5 seconds
+
+  // Create dots
+  slides.forEach((_, index) => {
+    const dot = document.createElement('div');
+    dot.classList.add('dot');
+    if (index === 0) dot.classList.add('active');
+    dot.addEventListener('click', () => goToSlide(index));
+    dotsContainer.appendChild(dot);
+  });
+
+  const dots = document.querySelectorAll('.dot');
+
+  // Update slides
+  function updateSlider() {
+    track.style.transform = `translateX(-${currentIndex * 100}%)`;
+    
+    // Update active classes
+    slides.forEach((slide, index) => {
+      slide.classList.toggle('active', index === currentIndex);
+    });
+    
+    dots.forEach((dot, index) => {
+      dot.classList.toggle('active', index === currentIndex);
+    });
+  }
+
+  // Go to specific slide
+  function goToSlide(index) {
+    currentIndex = index;
+    if (currentIndex >= slides.length) currentIndex = 0;
+    if (currentIndex < 0) currentIndex = slides.length - 1;
+    updateSlider();
+    resetInterval();
+  }
+
+  // Next slide
+  function nextSlide() {
+    goToSlide(currentIndex + 1);
+  }
+
+  // Previous slide
+  function prevSlide() {
+    goToSlide(currentIndex - 1);
+  }
+
+  // Start auto-sliding
+  function startInterval() {
+    intervalId = setInterval(nextSlide, slideInterval);
+  }
+
+  // Reset interval
+  function resetInterval() {
+    clearInterval(intervalId);
+    startInterval();
+  }
+
+  // Event listeners
+  nextBtn.addEventListener('click', () => {
+    nextSlide();
+    resetInterval();
+  });
+
+  prevBtn.addEventListener('click', () => {
+    prevSlide();
+    resetInterval();
+  });
+
+  // Pause on hover
+  track.addEventListener('mouseenter', () => {
+    clearInterval(intervalId);
+  });
+
+  track.addEventListener('mouseleave', startInterval);
+
+  // Initialize
+  updateSlider();
+  startInterval();
+});
+      </script>
+</body>
+</html>

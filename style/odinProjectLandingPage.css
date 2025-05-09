@@ -87,7 +87,12 @@ body{
     border: 5px solid rgb(0, 251, 255);
     margin-top: 50px;
     border-radius: 10px;
+    transition: transform .9;
     margin-bottom: 20px;
+
+    &:hover{
+        transform: scale(1.1);
+    }
 }
 .image-1{
     background-image: url(../img/Frieren/download.jpg);

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .signup-box{
+            display: flex;
+            flex-direction: column;
+            height: auto;
+            width: 300px;
+            background-color: white;
+            align-items: center;
+            box-shadow: 0px 0px 20px 1px;
+            box-sizing: border-box;
+        }
+        .signin-box{
+            display: none;
+            flex-direction: column;
+            height: auto;
+            width: 300px;
+            background-color: white;
+            align-items: center;
+            box-shadow: 0px 0px 20px 1px;
+            box-sizing: border-box;
+        }
+        .input-container{
+            display: flex;
+            flex-direction: column;
+        }
+        .input-container input{
+            margin: 5px 0 5px 0;
+            padding: 5px;
+            width: 250px;
+        }
+        .input-container button{
+            width: 100px;
+            padding: 10px;
+            border-radius: 10px;
+            border: none;
+            background-color: blue;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="signup-box">
+        <form method="post">
+        <div>
+            <h2>Welcome</h2>
+        </div>
+        <div class="input-container"> 
+            <label for="username">Username: </label>
+            <input type="text" id="username" name="username" required autofocus>
+            <label for="email">Email: </label>
+            <input type="email" name="email" id="email" required>
+            <label for="password">Password: </label>
+            <input type="password" name="password" id="password" required>
+            <button class="signup-button">Sign Up</button>
+            <p>Already have an account? <a href="#" class="signin-link">Sign In</a></p>
+        </div>
+        </form>
+    </div>
+    <div class="signin-box">
+        <div>
+            <h2>Welcome Back</h2>
+        </div>
+        <div class="input-container"> 
+            <label for="username">Username: </label>
+            <input type="text" id="signin-username" name="username" required autofocus>
+            <label for="password">Password: </label>
+            <input type="password" name="password" id="signin-password" required>
+            <button class="signin-button">Sign In</button>
+            <p>Don't have an account? <a href="#" class="signup-link">Sign Up</a></p>
+        </div>
+    </div>
+    <div class="display">
+
+    </div>
+    <button class="reset">Reset</button>
+    <script>
+        // Sign-Up Form Elements
+        const signupUsername = document.querySelector('#username');
+        const signupEmail = document.querySelector('#email');
+        const signupPassword = document.querySelector('#password');
+        const signupBtn = document.querySelector('.signup-button');
+
+        // Sign-In Form Elements
+        const signinUsername = document.querySelector('#signin-username');
+        const signinPassword = document.querySelector('#signin-password');
+        const signinBtn = document.querySelector('.signin-button');
+
+        // Display Area
+        const display = document.querySelector('.display');
+
+        // Sign-Up and Sign-In Boxes
+        const signupBox = document.querySelector('.signup-box');
+        const signinBox = document.querySelector('.signin-box');
+
+        // Links to Switch Between Forms
+        const signinLink = document.querySelector('.signin-link');
+        const signupLink = document.querySelector('.signup-link');
+
+        // Initialize User Data
+        let userData;
+
+        try {
+            const storedData = localStorage.getItem('userData');
+            userData = JSON.parse(storedData);
+
+            // Check if parsed data is valid
+            if (!userData || typeof userData !== 'object') {
+                throw new Error('Invalid userData');
+            }
+        } catch (error) {
+            // Reset localStorage and initialize userData with default values
+            userData = {
+                Username: '',
+                Email: '',
+                Password: '',
+            };
+            localStorage.removeItem('userData');
+            console.error('Error parsing userData from localStorage:', error);
+        }
+
+        // Sign-Up Functionality
+        signupBtn.addEventListener('click', () => {
+            const usernameValue = signupUsername.value;
+            const emailValue = signupEmail.value;
+            const passwordValue = signupPassword.value;
+
+            if (usernameValue === "" || emailValue === "" || passwordValue === "") {
+                display.innerHTML = `Fill all the fields`;
+                return;
+            }
+
+            userData.Username = usernameValue;
+            userData.Email = emailValue;
+            userData.Password = passwordValue;
+
+            localStorage.setItem('userData', JSON.stringify(userData));
+
+            display.innerHTML = `Signed up successfully! Welcome, ${userData.Username}`;
+
+            signupUsername.value = "";
+            signupEmail.value = "";
+            signupPassword.value = "";
+        });
+
+        // Sign-In Functionality
+        signinBtn.addEventListener('click', () => {
+            const usernameValue = signinUsername.value;
+            const passwordValue = signinPassword.value;
+
+            if (usernameValue === "" || passwordValue === "") {
+                display.innerHTML = `Fill all the fields`;
+                return;
+            }
+
+            if (usernameValue === userData.Username && passwordValue === userData.Password) {
+                display.innerHTML = `Welcome back, ${userData.Username}!`;
+            } else {
+                display.innerHTML = `Invalid username or password`;
+            }
+
+            signinUsername.value = "";
+            signinPassword.value = "";
+        });
+
+        // Switch Between Sign-Up and Sign-In Forms
+        signinLink.addEventListener('click', () => {
+            signinBox.style.display = 'flex';
+            signupBox.style.display = 'none';
+        });
+
+        signupLink.addEventListener('click', () => {
+            signupBox.style.display = 'flex';
+            signinBox.style.display = 'none';
+        });
+
+        const reset = document.querySelector('.reset');
+        reset.addEventListener('click', () => {
+            userData = {
+                Username: '',
+                Email: '',
+                Password: '',
+            };
+            localStorage.removeItem('userData');
+            display.innerHTML = 'Data has been reset.';
+        });
+        console.log(localStorage);
+    </script>
+</body>
+</html>
